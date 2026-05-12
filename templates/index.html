@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timeline App</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="/">✨ TimelineApp</a>
+
+    <div class="ms-auto d-flex align-items-center">
+      <span class="text-white me-3">👋 {{ user }}</span>
+      <a class="btn btn-light text-primary rounded-pill px-3" href="/logout">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container py-4">
+
+  <div class="row mb-4">
+    <!-- ADD -->
+    <div class="col-md-8">
+      <div class="glass-card p-3">
+        <form action="/create" method="post" class="d-flex">
+          <input name="content" class="form-control me-2" placeholder="Tulis sesuatu..." required>
+          <button class="btn btn-success">➕</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="col-md-4">
+      <div class="glass-card p-3">
+        <form action="/search" method="get" class="input-group">
+          <input name="keyword" class="form-control" placeholder="Search...">
+          <button class="btn btn-outline-light">🔍</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="glass-card p-3">
+    <h5 class="text-center mb-3">📜 Timeline</h5>
+
+    <ul class="list-group list-group-flush timeline">
+      {% for line in tl %}
+      <li class="list-group-item timeline-item d-flex justify-content-between align-items-center">
+        <div>
+          <span class="badge bg-info text-dark">#{{ line.id }}</span>
+          {{ line.content }}
+        </div>
+
+        <a href="/delete/{{ line.id }}" class="btn btn-danger btn-sm">🗑</a>
+      </li>
+      {% else %}
+      <li class="list-group-item text-center text-light">
+        Belum ada data 😢
+      </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</div>
+
+<!-- JS EFFECT -->
+<script>
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      item.style.boxShadow = "0 0 20px rgba(0,198,255,0.8)";
+    });
+    item.addEventListener('mouseleave', () => {
+      item.style.boxShadow = "none";
+    });
+  });
+</script>
+
+</body>
+</html>

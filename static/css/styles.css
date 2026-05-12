@@ -1,0 +1,112 @@
+/* BACKGROUND */
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* GLASS CARD */
+.glass-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* INPUT */
+input.form-control {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #eee;
+}
+
+/* BUTTON */
+.btn-success {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  border: none;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+}
+
+/* ITEM */
+.timeline-item {
+  position: relative;
+  margin-left: 20px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  background: #00c6ff;
+  border-radius: 50%;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+  background: rgba(255,255,255,0.25);
+}
+
+/* DELETE BUTTON */
+.btn-danger {
+  background: #ff4b5c;
+  border: none;
+}
+
+.btn-danger:hover {
+  transform: scale(1.1);
+}
+
+/* ANIMATION */
+.timeline-item {
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
